@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Temperature Converter</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: radial-gradient(circle at center, #2a2f45, #1f2233);
+    color: #e0e6f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+
+  .converter {
+    background: rgba(32, 38, 57, 0.85);
+    padding: 2.5rem 3rem;
+    border-radius: 14px;
+    box-shadow: 0 20px 40px rgba(72, 73, 122, 0.7);
+    width: 340px;
+    text-align: center;
+    backdrop-filter: blur(8px);
+  }
+
+  h1 {
+    margin-bottom: 1.8rem;
+    color: #7fffd4;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+  }
+
+  label {
+    display: block;
+    margin-top: 1.25rem;
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 0.03em;
+    color: #a3b8d1;
+  }
+
+  input[type="number"],
+  select {
+    width: 100%;
+    padding: 0.65rem 1rem;
+    margin-top: 0.6rem;
+    border-radius: 8px;
+    border: none;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #2a2f45;
+    background: #dff6f0;
+    box-shadow: inset 0 2px 6px rgba(0,0,0,0.12);
+    transition: background-color 0.25s ease;
+  }
+
+  input[type="number"]:focus,
+  select:focus {
+    outline: none;
+    background-color: #b6ebdd;
+  }
+
+  button {
+    margin-top: 2rem;
+    background: linear-gradient(90deg, #5fffcb 0%, #4ad7a9 100%);
+    color: #1b202c;
+    border: none;
+    width: 100%;
+    padding: 0.9rem 0;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 12px 18px rgba(74, 215, 169, 0.54);
+    transition: background 0.3s ease;
+  }
+
+  button:hover {
+    background: linear-gradient(90deg, #4ad7a9 0%, #5fffcb 100%);
+    box-shadow: 0 15px 25px rgba(74, 215, 169, 0.7);
+  }
+
+  .result {
+    margin-top: 2rem;
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: #7fffd4;
+    background: #1a2433;
+    padding: 1rem 0;
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(127, 255, 212, 0.5);
+    user-select: none;
+  }
+</style>
+</head>
+<body>
+  <div class="converter">
+    <h1>Temperature Converter</h1>
+    <form id="tempForm">
+      <label for="inputTemp">Enter Temperature:</label>
+      <input type="number" id="inputTemp" placeholder="Temperature value" required />
+
+      <label for="inputUnit">From:</label>
+      <select id="inputUnit" required>
+        <option value="celsius">Celsius (°C)</option>
+        <option value="fahrenheit">Fahrenheit (°F)</option>
+        <option value="kelvin">Kelvin (K)</option>
+      </select>
+
+      <label for="outputUnit">To:</label>
+      <select id="outputUnit" required>
+        <option value="celsius">Celsius (°C)</option>
+        <option value="fahrenheit">Fahrenheit (°F)</option>
+        <option value="kelvin">Kelvin (K)</option>
+      </select>
+
+      <button type="submit">Convert</button>
+    </form>
+    <div class="result" id="result">Result will appear here</div>
+  </div>
+
+<script>
+  document.getElementById('tempForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const temp = parseFloat(document.getElementById('inputTemp').value);
+    const fromUnit = document.getElementById('inputUnit').value;
+    const toUnit = document.getElementById('outputUnit').value;
+    let result;
+
+    if (isNaN(temp)) {
+      result = 'Please enter a valid number';
+    } else if (fromUnit === toUnit) {
+      result = `${temp.toFixed(2)} °${toUnit.charAt(0).toUpperCase()}`;
+    } else {
+      let tempC;
+      switch(fromUnit) {
+        case 'celsius':
+          tempC = temp; break;
+        case 'fahrenheit':
+          tempC = (temp - 32) * 5/9; break;
+        case 'kelvin':
+          tempC = temp - 273.15; break;
+      }
+      switch(toUnit) {
+        case 'celsius':
+          result = `${tempC.toFixed(2)} °C`; break;
+        case 'fahrenheit':
+          result = `${(tempC * 9/5 + 32).toFixed(2)} °F`; break;
+        case 'kelvin':
+          result = `${(tempC + 273.15).toFixed(2)} K`; break;
+      }
+    }
+    document.getElementById('result').textContent = result;
+  });
+</script>
+</body>
+</html>
