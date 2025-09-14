@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Your Portfolio</title>
+<style>
+body {
+  margin: 0; font-family: 'Poppins', Arial, sans-serif; background: #21222c; color: #fff;
+}
+header {
+  display: flex; flex-direction: row; align-items: center; justify-content: space-between;
+  padding: 40px 8vw 0 8vw;
+}
+.logo {
+  width: 44px; height: 44px; background: #ffb147; border-radius: 20px; display: flex; align-items: center; justify-content: center;
+  font-size: 2rem; font-weight: bold;
+}
+nav { display: flex; gap: 2em;}
+nav a { color: #fff; font-weight: 500; text-decoration: none;}
+nav a:hover { color: #ffb147;}
+.hero {
+  display: flex; align-items: center; justify-content: flex-start; gap: 32px;
+  padding: 40px 8vw 24px 8vw;
+}
+.hero-img {
+  width: 136px; height: 136px; border-radius: 18px; background: #393a46;
+  display: flex; align-items: center; justify-content: center; overflow: hidden;
+}
+.hero-content h1 {
+  font-size: 2.8rem; font-weight: 700; color: #fff;
+}
+.hero-content h2 {
+  font-size: 1.4rem; font-weight: 400; color: #ffb147;
+}
+.hero-content p {
+  font-size: 1rem; color: #dfdfdf;
+}
+.stats, .services {
+  display: flex; gap: 32px; justify-content: center; margin: 32px 0;
+}
+.stat, .service {
+  background: #2b2b38; border-radius: 12px; padding: 24px; min-width: 130px;
+  text-align: center; font-weight: 500; color: #fff;
+}
+.stat-number { font-size: 2rem; color: #ffb147;}
+.service {
+  flex: 1;
+  font-size: 1.1rem;
+  background: #393a46;
+  cursor: pointer;
+}
+.service.active { background: #ffb147; color: #21222c;}
+.works { padding: 40px 8vw;}
+.works-title { font-size: 2rem; margin-bottom: 18px;}
+.projects {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px;
+}
+.project-card {
+  background: #2b2b38; border-radius: 12px; padding: 20px; color: #fff;
+}
+.project-title { font-size: 1.2rem; color: #ffb147; margin-bottom: 6px;}
+.project-desc { font-size: 1rem; }
+.contact {
+  background: #ffb147; color: #21222c; text-align: center; padding: 32px 0; margin-top: 42px;
+}
+.contact-icons { display: flex; gap: 16px; justify-content: center; margin-bottom: 8px;}
+.contact-icons a { color: #21222c; font-size: 1.5rem;}
+.contact-info { font-size: 1rem; }
+@media(max-width: 768px) {
+  .hero, header, .works { flex-direction: column; padding: 20px 2vw;}
+  .projects { grid-template-columns: 1fr;}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">T</div>
+  <nav>
+    <a href="#services">Services</a>
+    <a href="#works">Works</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-img">
+    <!-- profile image or initials -->
+    <span style="font-size:3rem;">T</span>
+  </div>
+  <div class="hero-content">
+    <h1>Kolluru Tharun</h1>
+    <h2>Web Developer & UI/UX Designer</h2>
+    <p>Passionate about building beautiful, functional, and accessible web experiences.</p>
+    <a href="#contact" style="color:#ffb147;">My story →</a>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stat"><div class="stat-number">1</div>Years Experience</div>
+  <div class="stat"><div class="stat-number">2</div>Projects</div>
+  <div class="stat"><div class="stat-number">10</div>Clients</div>
+</div>
+
+<div class="services" id="services">
+  <div class="service active">UI/UX Designer</div>
+  <div class="service">Branding Designer</div>
+  <div class="service">Full Stack Developer</div>
+</div>
+
+<section class="works" id="works">
+  <div class="works-title">Selected Projects</div>
+  <div class="projects">
+    <div class="project-card">
+      <div class="project-title">Landing Page</div>
+      <div class="project-desc">HTML/CSS portfolio for modern web design. See layout and visual details.</div>
+    </div>
+    <div class="project-card">
+      <div class="project-title">Temperature Converter</div>
+      <div class="project-desc">Simple and responsive temperature conversion tool built with HTML/CSS.</div>
+    </div>
+    <!-- Add cards for more works here -->
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="contact-icons">
+    <a href="mailto:your.email@example.com" title="Email">&#9993;</a>
+    <a href="https://linkedin.com/in/your-profile" title="LinkedIn">&#128100;</a>
+    <a href="https://github.com/your-github" title="GitHub">&#128187;</a>
+  </div>
+  <div class="contact-info">
+    <strong>Email:</strong>kollurtharun@gmail.com<br>
+    <strong>LinkedIn:</strong>www.linkedin.com/in/tharunkolluru
+  </div>
+  <p>Let's discuss your next project!</p>
+</section>
+</body>
+</html>
